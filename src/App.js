@@ -4,6 +4,7 @@ import { useState } from "react";
 function App() {
   const [showSecondList, setShowSecondList] = useState(0);
   const [showThirdList, setShowThirdList] = useState(0);
+  const [hamburger,setHamburger] = useState(false)
 
   let dropdownData = [
     {
@@ -122,67 +123,79 @@ function App() {
 
   return (
     <div>
-      <div className="flex border">
-        <div className="">
+      <div className="lg:flex md:block text-[#57575c]">
+        <div className="flex justify-between border lg:h-[100px]">
           <img
             src="https://kharedobecho.com/images/kharedobecho.png"
             width="110px"
           ></img>
+          <img onClick={()=>setHamburger(!hamburger)} className="lg:hidden cursor-pointer" src="https://cdn.iconscout.com/icon/free/png-256/hamburger-menu-462145.png" width="50px"></img>
         </div>
-        <div className="mt-2 flex mx-auto justify-center w-full">
+        <div className={`mt-5 lg:flex ${hamburger?"md:visible":"md:hidden"} mx-auto justify-between lg:w-[70%] md:w-full`}>
           {dropdownData.map((list) => {
             return (
-              <div>
+              <div className="lg:w-[20%] md:w-full">
                 <div
                   onClick={() => {
                     showSecondList === list.id
                       ? setShowSecondList(0)
-                      : setShowSecondList(list.id);
+                      : setShowSecondList(list.id); 
                   }}
-                  className="mx-5 cursor-pointer flex border"
+                  className="mx-5 cursor-pointer flex lg:mb-4 md:0 p-2 w-full md:justify-between border"
                 >
-                  <p>{list.firstList}</p>
-                  <img
-                    className="w-[10px] h-[5px] my-auto ml-2"
-                    src="http://cdn.onlinewebfonts.com/svg/img_218064.png"
-                  ></img>
+                  <p className="">{list.firstList}</p>
+                  {list.secondList.length > 0 && (
+                    <img
+                      className="w-[10px] h-[5px] my-auto lg:ml-2 md:mr-6"
+                      src="http://cdn.onlinewebfonts.com/svg/img_218064.png"
+                    ></img>
+                  )}
                 </div>
-                <div
-                  className={`mx-2 cursor-pointer ${
-                    showSecondList === list.id ? "block" : "hidden"
-                  }`}
-                >
-                  {list.secondList.map((e) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          showThirdList === e.id
-                            ? setShowThirdList(0)
-                            : setShowThirdList(e.id);
-                        }}
-                        className="border"
-                      >
-                        <p>{e.secondKey}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className={`mx-2 cursor-pointer`}>
-                  {list.secondList.map((el) => {
-                    return (
-                      <div
-                        className={`${
-                          showThirdList === el.id && showSecondList === list.id ? "block" : "hidden"
-                        }`}
-                      >
-                        <p>
-                          {el.list.map((e) => {
-                            return <div>{e}</div>;
-                          })}
-                        </p>
-                      </div>
-                    );
-                  })}
+                <div className="lg:flex md:block lg:w-[400px] md:w-full">
+                  <div
+                    className={`ml-5 cursor-pointer border ${
+                      showSecondList === list.id
+                        ? "block border bg-[#f0f7ff]"
+                        : "hidden"
+                    }`}
+                  >
+                    {list.secondList.map((e) => {
+                      return (
+                        <div
+                          onClick={() => {
+                            showThirdList === e.id
+                              ? setShowThirdList(0)
+                              : setShowThirdList(e.id);
+                          }}
+                          className="lg:flex"
+                        >
+                          <div className="lg:w-[200px] md:w-full flex justify-between p-2 border">
+                          <p>{e.secondKey}</p>
+                          {e.list.length > 0 && (
+                            <img
+                              className="w-[10px] h-[10px] mt-2 ml-2"
+                              src="https://cdn-icons-png.flaticon.com/512/32/32213.png"
+                            ></img>
+                          )}
+                          </div>
+                          <div
+                            className={`${
+                              showThirdList === e.id &&
+                              showSecondList === list.id
+                                ? " ml-3 bg-[#f0f7ff] block "
+                                : "hidden"
+                            }`}
+                          >
+                            <p>
+                              {e.list.map((el) => {
+                                return <div className="p-2">{el}</div>;
+                              })}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             );
