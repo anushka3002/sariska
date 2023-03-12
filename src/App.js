@@ -4,7 +4,7 @@ import { useState } from "react";
 function App() {
   const [showSecondList, setShowSecondList] = useState(0);
   const [showThirdList, setShowThirdList] = useState(0);
-  const [hamburger,setHamburger] = useState(false)
+  const [hamburger,setHamburger] = useState(true)
 
   let dropdownData = [
     {
@@ -124,24 +124,24 @@ function App() {
   return (
     <div>
       <div className="lg:flex md:block text-[#57575c]">
-        <div className="flex justify-between border lg:h-[100px]">
+        <div className="flex justify-between lg:h-[100px]">
           <img
             src="https://kharedobecho.com/images/kharedobecho.png"
-            width="110px"
+            width="120px"
           ></img>
-          <img onClick={()=>setHamburger(!hamburger)} className="lg:hidden cursor-pointer" src="https://cdn.iconscout.com/icon/free/png-256/hamburger-menu-462145.png" width="50px"></img>
+          <img onClick={()=>setHamburger(!hamburger)} className="lg:hidden cursor-pointer" src="https://cdn.iconscout.com/icon/free/png-256/hamburger-menu-462145.png" width="40px"></img>
         </div>
         <div className={`mt-5 lg:flex ${hamburger?"md:visible":"md:hidden"} mx-auto justify-between lg:w-[70%] md:w-full`}>
           {dropdownData.map((list) => {
             return (
-              <div className="lg:w-[20%] md:w-full">
+              <div className="lg:w-[18%] md:w-[95%]">
                 <div
                   onClick={() => {
                     showSecondList === list.id
                       ? setShowSecondList(0)
                       : setShowSecondList(list.id); 
                   }}
-                  className="mx-5 cursor-pointer flex lg:mb-4 md:0 p-2 w-full md:justify-between border"
+                  className="mx-5 cursor-pointer flex lg:pb-2 md:p-2 p-2 w-full md:justify-between lg:justify-start lg:pt-1 md:border lg:border-[white] lg:border"
                 >
                   <p className="">{list.firstList}</p>
                   {list.secondList.length > 0 && (
@@ -153,9 +153,9 @@ function App() {
                 </div>
                 <div className="lg:flex md:block lg:w-[400px] md:w-full">
                   <div
-                    className={`ml-5 cursor-pointer border ${
+                    className={`ml-5 cursor-pointer ${
                       showSecondList === list.id
-                        ? "block border bg-[#f0f7ff]"
+                        ? "block"
                         : "hidden"
                     }`}
                   >
@@ -163,14 +163,15 @@ function App() {
                       return (
                         <div
                           onClick={() => {
-                            showThirdList === e.id
+                            showThirdList === e.id 
+                            &&  showSecondList === list.id
                               ? setShowThirdList(0)
                               : setShowThirdList(e.id);
                           }}
                           className="lg:flex"
-                        >
-                          <div className="lg:w-[200px] md:w-full flex justify-between p-2 border">
-                          <p>{e.secondKey}</p>
+                        > 
+                          <div className="lg:w-[200px] md:w-full flex justify-between p-2 bg-[#f0f7ff] border">
+                          <p className="transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">{e.secondKey}</p>
                           {e.list.length > 0 && (
                             <img
                               className="w-[10px] h-[10px] mt-2 ml-2"
@@ -180,17 +181,18 @@ function App() {
                           </div>
                           <div
                             className={`${
+                              e.list.length > 0 && 
                               showThirdList === e.id &&
-                              showSecondList === list.id
-                                ? " ml-3 bg-[#f0f7ff] block "
+                              showSecondList === showSecondList
+                                ? "block border"
                                 : "hidden"
                             }`}
                           >
-                            <p>
+                            <div>
                               {e.list.map((el) => {
-                                return <div className="p-2">{el}</div>;
+                                return <div className="p-2 bg-[#f0f7ff] pl-4"><p className="transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">{el}</p></div>;
                               })}
-                            </p>
+                            </div>
                           </div>
                         </div>
                       );
