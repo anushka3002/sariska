@@ -136,6 +136,11 @@ function App() {
             return (
               <div className="lg:w-[18%] md:w-[95%]">
                 <div
+                onMouseOver={() => {
+                  showSecondList === list.id
+                    ? setShowSecondList(0)
+                    : setShowSecondList(list.id); 
+                }}
                   className="mx-5 cursor-pointer flex lg:pb-2 md:p-2 p-2 w-full md:justify-between justify-content lg:justify-start lg:pt-1 md:border lg:border-[white] lg:border border"
                 >
                   <p onMouseOver={() => {
