@@ -134,9 +134,7 @@ function App() {
         <div className={`mt-5 lg:flex ${hamburger?"md:visible":"md:hidden"} mx-auto justify-between lg:w-[70%] md:w-full`}>
           {dropdownData.map((list) => {
             return (
-              <div onMouseLeave={()=>{
-                setShowSecondList(10)
-              }} className="lg:w-[18%] md:w-[95%]">
+              <div className="lg:w-[18%] md:w-[95%]">
                 <div
                   className="mx-5 cursor-pointer flex lg:pb-2 md:p-2 p-2 w-full md:justify-between lg:justify-start lg:pt-1 md:border lg:border-[white] lg:border"
                 >
