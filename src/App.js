@@ -136,14 +136,13 @@ function App() {
             return (
               <div className="lg:w-[18%] md:w-[95%]">
                 <div
-                  onClick={() => {
+                  className="mx-5 cursor-pointer flex lg:pb-2 md:p-2 p-2 w-full md:justify-between lg:justify-start lg:pt-1 md:border lg:border-[white] lg:border"
+                >
+                  <p onMouseOver={() => {
                     showSecondList === list.id
                       ? setShowSecondList(0)
                       : setShowSecondList(list.id); 
-                  }}
-                  className="mx-5 cursor-pointer flex lg:pb-2 md:p-2 p-2 w-full md:justify-between lg:justify-start lg:pt-1 md:border lg:border-[white] lg:border"
-                >
-                  <p className="">{list.firstList}</p>
+                  }} className="">{list.firstList}</p>
                   {list.secondList.length > 0 && (
                     <img
                       className="w-[10px] h-[5px] my-auto lg:ml-2 md:mr-6"
@@ -162,16 +161,15 @@ function App() {
                     {list.secondList.map((e) => {
                       return (
                         <div
-                          onClick={() => {
+                          className="lg:flex"
+                        > 
+                          <div className="lg:w-[200px] md:w-full flex justify-between p-2 bg-[#f0f7ff] border">
+                          <p onMouseOver={() => {
                             showThirdList === e.id 
                             &&  showSecondList === list.id
                               ? setShowThirdList(0)
                               : setShowThirdList(e.id);
-                          }}
-                          className="lg:flex"
-                        > 
-                          <div className="lg:w-[200px] md:w-full flex justify-between p-2 bg-[#f0f7ff] border">
-                          <p className="transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">{e.secondKey}</p>
+                          }} className="transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">{e.secondKey}</p>
                           {e.list.length > 0 && (
                             <img
                               className="w-[10px] h-[10px] mt-2 ml-2"
