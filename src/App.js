@@ -285,9 +285,6 @@ function App() {
                             )}
                           </div>
                           <div
-                          onMouseLeave={()=>{
-                            setShowSecondList(0)
-                          }}
                             className={`${
                               e.list.length > 0 &&
                               showThirdList === e.id &&
