@@ -124,7 +124,7 @@ function App() {
   return (
     <div>
       <div className=" text-[#57575c]">
-        <div className="flex bg-[#f0f7ff] flex justify-between lg:h-[115px] w-full px-4">
+        <div className="flex bg-[#f0f7ff] flex justify-between lg:h-[115px] w-full px-4 py-2 lg:py-[0px]">
           <div className="">
             <img
               className="pt-2 hidden lg:flex"
@@ -204,7 +204,7 @@ function App() {
         <div
           className={`text-[14px] lg:flex w-full lg:mt-[-35px] ${
             hamburger ? "visible" : "hidden"
-          } mx-auto justify-between lg:w-[100%] md:w-full`}
+          } mx-auto justify-between lg:w-[80%] md:w-full`}
         >
           {dropdownData.map((list) => {
             return (
@@ -220,7 +220,7 @@ function App() {
                         ? setShowSecondList(0)
                         : setShowSecondList(list.id);
                     }}
-                    className="my-auto ml-3 hidden lg:block"
+                    className="my-auto ml-3 hidden lg:block hover:text-[#a2a2a2] transition transition-duration:500"
                   >
                     {list.firstList}
                   </p>
@@ -234,7 +234,7 @@ function App() {
                           ? setShowSecondList(0)
                           : setShowSecondList(list.id);
                       }}
-                      className="border-l lg:border:none w-[60px] ml-[-20px] my-auto py-4 lg:py-0 mx-auto items-center"
+                      className="border-l lg:border-none w-[60px] ml-[-20px] my-auto py-4 lg:py-0 mx-auto items-center"
                     >
                       <img
                         className="w-[10px] h-[5px] md:mr-6 mx-auto"
@@ -243,17 +243,16 @@ function App() {
                     </div>
                   )}
                 </div>
-
-                <div className="lg:flex md:block lg:w-[400px] md:w-full">
+                <div className="lg:flex md:block lg:w-[400px] md:w-full group">
                   <div
-                    className={`mx-5 cursor-pointer ${
+                    className={`mx-5 cursor-pointer transition-opacity duration-500 ease-in-out  ${
                       showSecondList === list.id ? "block" : "hidden"
                     }`}
                   >
                     {list.secondList.map((e) => {
                       return (
                         <div className="lg:flex">
-                          <div className="lg:w-[200px] md:w-full flex justify-between p-2 bg-[#f3f7fd]">
+                          <div className={`lg:w-[200px] md:w-full flex justify-between bg-[#f3f7fd] ${e.list.length === 0 && "py-2"}`}>
                             <p
                               onMouseOver={() => {
                                 showThirdList === e.id &&
@@ -261,11 +260,11 @@ function App() {
                                   ? setShowThirdList(0)
                                   : setShowThirdList(e.id);
                               }}
-                              className="hidden lg:block pl-3 w-full transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]"
+                              className={`${e.list.length > 0 && "lg:mt-2"} hidden lg:block pl-3 w-full transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]`}
                             >
                               {e.secondKey}
                             </p>
-                            <p className="block lg:hidden pl-3 w-full transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">
+                            <p className="my-auto block lg:hidden pl-3 w-full transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">
                               {e.secondKey}
                             </p>
                             {e.list.length > 0 && (
@@ -276,7 +275,7 @@ function App() {
                                     ? setShowThirdList(0)
                                     : setShowThirdList(e.id);
                                 }}
-                                className=""
+                                className="p-2"
                               >
                                 <img
                                   className="w-[10px] h-[10px] mt-2 ml-2"
@@ -298,7 +297,7 @@ function App() {
                               {e.list.map((el) => {
                                 return (
                                   <div className="p-2 bg-[#f0f7ff] pl-4">
-                                    <p className="ml-3 transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">
+                                    <p className="cursor-pointer ml-3 transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">
                                       {el}
                                     </p>
                                   </div>
