@@ -123,7 +123,7 @@ function App() {
 
   return (
     <div>
-      <div className=" text-[#57575c]">
+      <div className=" text-[#57575c] fixed w-full">
         <div className="flex bg-[#f0f7ff] flex justify-between lg:h-[115px] w-full px-4 py-2 lg:py-[0px]">
           <div className="">
             <img
@@ -264,7 +264,7 @@ function App() {
                             >
                               {e.secondKey}
                             </p>
-                            <p className="my-auto block lg:hidden pl-3 w-full transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">
+                            <p className="ml-3 my-auto block lg:hidden pl-3 w-full transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]">
                               {e.secondKey}
                             </p>
                             {e.list.length > 0 && (
@@ -285,6 +285,9 @@ function App() {
                             )}
                           </div>
                           <div
+                          onMouseLeave={()=>{
+                            setShowSecondList(0)
+                          }}
                             className={`${
                               e.list.length > 0 &&
                               showThirdList === e.id &&
@@ -315,6 +318,7 @@ function App() {
           })}
         </div>
       </div>
+      <div onMouseOver={()=>{setShowSecondList(10);setShowThirdList(10)}} className="hidden lg:block pt-[120px] w-full h-screen"></div>
     </div>
   );
 }
