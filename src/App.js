@@ -202,7 +202,7 @@ function App() {
           </div>
         </div>
         <div
-          className={`text-[14px] lg:flex w-full lg:mt-[-35px] ${
+          className={`text-[14px] lg:flex w-full lg:mt-[-35px] lg:h-full h-[450px] lg:overflow-hidden overflow-y-scroll ${
             hamburger ? "visible" : "hidden"
           } mx-auto justify-between lg:w-[80%] md:w-full`}
         >
@@ -243,7 +243,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div className="lg:flex md:block lg:w-[400px] md:w-full group">
+                <div className="lg:flex md:block lg:w-[400px] md:w-full">
                   <div
                     className={`mx-5 cursor-pointer transition-opacity duration-500 ease-in-out  ${
                       showSecondList === list.id ? "block" : "hidden"
