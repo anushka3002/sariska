@@ -210,16 +210,16 @@ function App() {
             return (
               <div className="lg:w-[18%] md:w-[95%]">
                 <div
-                 onMouseEnter={() => {
-                  showSecondList === list.id
-                    ? setShowSecondList(0)
-                    : setShowSecondList(list.id);
-                }}
                   className={`mx-5 cursor-pointer ${
                     list.secondList.length === 0 && "py-2"
                   } flex lg:pb-2 justify-between lg:justify-start lg:pt-1 md:border lg:border-[#f0f7ff] lg:border border`}
                 >
                   <p
+                   onMouseEnter={() => {
+                    showSecondList === list.id
+                      ? setShowSecondList(0)
+                      : setShowSecondList(list.id);
+                  }}
                     className="my-auto ml-3 hidden lg:block hover:text-[#a2a2a2] transition transition-duration:500"
                   >
                     {list.firstList}
