@@ -216,9 +216,7 @@ function App() {
                 >
                   <p
                    onMouseEnter={() => {
-                    showSecondList === list.id
-                      ? setShowSecondList(0)
-                      : setShowSecondList(list.id);
+                       setShowSecondList(list.id);
                   }}
                     className="my-auto ml-3 hidden lg:block hover:text-[#a2a2a2] transition transition-duration:500"
                   >
