@@ -318,7 +318,6 @@ function App() {
           })}
         </div>
       </div>
-      <div onMouseOver={()=>{setShowSecondList(10);setShowThirdList(10)}} className="hidden lg:block pt-[120px] w-full h-screen"></div>
     </div>
   );
 }
