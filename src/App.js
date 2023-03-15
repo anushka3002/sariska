@@ -202,13 +202,18 @@ function App() {
           </div>
         </div>
         <div
+         onMouseLeave={() => {
+          setShowSecondList(10);
+          }}
           className={`text-[14px] lg:flex w-full lg:mt-[-35px] lg:h-full h-[450px] lg:overflow-hidden overflow-y-scroll ${
             hamburger ? "visible" : "hidden"
           } mx-auto justify-between lg:w-[80%] md:w-full`}
         >
           {dropdownData.map((list) => {
             return (
-              <div className="lg:w-[18%] md:w-[95%]">
+              <div
+             
+               className="lg:w-[18%] md:w-[95%]">
                 <div
                   className={`mx-5 cursor-pointer ${
                     list.secondList.length === 0 && "py-2"
