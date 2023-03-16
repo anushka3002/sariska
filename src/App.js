@@ -258,10 +258,7 @@ function App() {
                           <div className={`lg:w-[200px] md:w-full flex justify-between bg-[#f3f7fd] ${e.list.length === 0 && "py-2"}`}>
                             <p
                               onMouseOver={() => {
-                                showThirdList === e.id &&
-                                showSecondList === list.id
-                                  ? setShowThirdList(0)
-                                  : setShowThirdList(e.id);
+                               setShowThirdList(e.id);
                               }}
                               className={`${e.list.length > 0 && "lg:mt-2"} hidden lg:block pl-3 w-full transition ease-in-out delay-150 hover:translate-x-1 duration-300 hover:text-[#959498]`}
                             >
